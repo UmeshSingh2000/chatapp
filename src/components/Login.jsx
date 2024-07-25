@@ -39,7 +39,7 @@ const Login = () => {
         e.preventDefault();
         setLoading(true)
         try {
-            const response = await axios.post('http://localhost:3000/login', {
+            const response = await axios.post('https://backend-v52s.onrender.com/login', {
                 username,
                 password
             });
