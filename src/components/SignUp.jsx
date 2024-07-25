@@ -29,7 +29,7 @@ const SignUp = () => {
         }
         setLoading(true)
         try {
-            const response = await axios.post('http://localhost:3000/register', {
+            const response = await axios.post('https://backend-v52s.onrender.com/register', {
                 username,
                 password
             });
