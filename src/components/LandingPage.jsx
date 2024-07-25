@@ -5,7 +5,7 @@ import { io } from 'socket.io-client';
 import ChatScreen from './ChatScreen';
 
 const LandingPage = () => {
-  const socket = useMemo(() => io('http://localhost:3000/'), []);
+  const socket = useMemo(() => io('https://backend-v52s.onrender.com/'), []);
   const [searchUser, setSearchUser] = useState('');
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
@@ -25,7 +25,7 @@ const LandingPage = () => {
   const handleForm = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:3000/', {
+      const res = await axios.post('https://backend-v52s.onrender.com/', {
         username: searchUser,
       });
       setUser(res.data)
@@ -52,7 +52,7 @@ const LandingPage = () => {
       console.log('connected', socket.id);
       try {
         const username = localStorage.getItem('username');
-        const response = await axios.put('http://localhost:3000/setId', {
+        const response = await axios.put('https://backend-v52s.onrender.com/setId', {
           username: username,
           id: socket.id,
         });
@@ -72,7 +72,7 @@ const LandingPage = () => {
   }, [user]);
   useEffect(() => {
     socket.on("recieved-message", async ({ message, sender, timestamp }) => {
-      const res = await axios.post('http://localhost:3000/', {
+      const res = await axios.post('https://backend-v52s.onrender.com/', {
         username: sender
       });
       const newUser = res.data;
